@@ -1,3 +1,12 @@
 # Freshwater_sponge_microbiome
 
-This repository... 
+This repository provides supporting information for the manuscript "Microbiome of the freshwater sponge <i>Ephydatia muelleri</i> shares compositional and functional similarities with those of marine sponges," which is being prepared for peer review.
+
+    "sp_analysis" provides the R code to reproduce all analyses and statistical tests.
+    "sp_figures" provides the R code to reproduce all figures. It requires objects produced by the analysis code.
+
+The raw data will be provided as an R workspace and associated files upon manuscript acceptance or upon reasonable request to the first author, who can be reached at sasugden@gmail.com or ssugden@ualberta.ca.
+
+If you have questions or concerns with these files, or trouble downloading them, please contact sasugden@gmail.com or ssugden@ualberta.ca.
+
+De-multiplexed, unfiltered sequencing data has been deposited in the NCBI Short Read Archive under accession number PRJNA526747.
