@@ -4,6 +4,8 @@ This repository provides supporting information for the manuscript "Microbiome o
 
 - <b>sp_analysis</b> provides the R code to reproduce all analyses and statistical tests.
 - <b>sp_figures</b> provides the R code to reproduce all figures. It requires objects produced by the analysis code.
+- <b>sp_qiime2_code</b> provides the Linux terminal code used for all QIIME2 analysis (i.e., comparison to Kenny et al.).
+- <b>sp_other_code</b> provides the Linux terminal code (or examples of the code) used for MAFFT alignment and MAG analyis. 
 
 The raw data will be provided as an R workspace and associated files upon manuscript acceptance or upon reasonable request to the first author, who can be reached at sasugden@gmail.com or ssugden@ualberta.ca.
 
