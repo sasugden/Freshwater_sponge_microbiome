@@ -1,0 +1,142 @@
+##### Generic code used for MAFFT alignments #####
+# All sequences being aligned were downloaded into the same directory,
+# concatenated into a single fasta file,
+# and then aligned using MAFFT to produce a tree file.
+
+cat *.fasta > for_alignment.fasa
+mafft --treeout for_alignment.fasta > aligned.fasta
+
+##### Predicting protein-coding genes for reference sequences w/o annotations #####
+# Some of the reference sequences (corresponding to the MAGs) did not have annotations
+# or predicted protein sequences.
+# This code was used to predict protein-coding genes for those sequences.
+prodigal -i GCA_002408565.1_genome.fna -o GCA_002408565.1_genes -a GCA_002408565.1_proteins.faa -p meta
+prodigal -i GCA_903891375.1_genome.fna -o GCA_903891375.1.genes -a GCA_903891375.1_proteins.faa -p meta
+prodigal -i GCA_903886275.1_genome.fna -o GCA_903886275.1.genes -a GCA_903886275.1_proteins.faa -p meta
+prodigal -i GCA_903845935.1_genome.fna -o GCA_903845935.1.genes -a GCA_903845935.1_proteins.faa -p meta
+prodigal -i GCA_903931835.1_genome.fna -o GCA_903931835.1.genes -a GCA_903931835.1_proteins.faa -p meta
+
+##### Measure the GC content of each genome #####
+# The first line measures the number of GC nucleotides
+# The second line measures the total number of nucleotides
+
+cat 3.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 3.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 13.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 13.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 17.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 17.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 35_sub.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 35_sub.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 48_sub.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 48_sub.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 50.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 50.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 53.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 53.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 70_sub.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 70_sub.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 78.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 78.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 105.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 105.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 117.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 117.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 131.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 131.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 137.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 137.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat 138.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat 138.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat MaxBin2_out.006_sub.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat MaxBin2_out.006_sub.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat MaxBin2_out.014.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat MaxBin2_out.014.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat MaxBin2_out.027_sub.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat MaxBin2_out.027_sub.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat MaxBin2_out.045.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat MaxBin2_out.045.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat MaxBin2_out.060_sub.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat MaxBin2_out.060_sub.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat MaxBin2_out.099.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat MaxBin2_out.099.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat MaxBin2_out.111.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat MaxBin2_out.111.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat sponges.bins.28.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat sponges.bins.28.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat sponges.bins.49.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat sponges.bins.49.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat sponges.bins.61.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat sponges.bins.61.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+cat sponges.bins.76.fa | grep -v ">" | tr -d aAtTnN"\n" | wc -c
+cat sponges.bins.76.fa | grep -v ">" | tr -d nN"\n" | wc -c
+
+##### Clean the single-copy protein sequences that get output from R. #####
+# These sequence files have some formatting errors that need to be cleaned before they can be aligned using MAFFT.
+sed -i 's/*//g' mag04.singles.faa
+sed -i 's/*//g' mag06.singles.faa
+sed -i 's/*//g' mag07.singles.faa
+sed -i 's/*//g' mag09.singles.faa
+sed -i 's/*//g' mag10.singles.faa
+sed -i 's/*//g' mag12.singles.faa
+sed -i 's/*//g' mag18.singles.faa
+sed -i 's/*//g' mag24.singles.faa
+sed -i 's/*//g' mag25.singles.faa
+
+sed -i 's/*//g' ref04.singles.faa
+sed -i 's/*//g' ref06.singles.faa
+sed -i 's/*//g' ref07.singles.faa
+sed -i 's/*//g' ref09.singles.faa
+sed -i 's/*//g' ref10.singles.faa
+sed -i 's/*//g' ref12.singles.faa
+sed -i 's/*//g' ref18.singles.faa
+sed -i 's/*//g' ref24.singles.faa
+sed -i 's/*//g' ref25.singles.faa
+
+# Then concatenate the sequences of all the single-copy genes together before alignment.
+# This essentially creates one long "string" of all 12 gene sequences.
+cat mag04.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag04.mega.faa
+cat mag06.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag06.mega.faa
+cat mag07.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag07.mega.faa
+cat mag09.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag09.mega.faa
+cat mag10.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag10.mega.faa
+cat mag12.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag12.mega.faa
+cat mag18.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag18.mega.faa
+cat mag24.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag24.mega.faa
+cat mag25.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > mag25.mega.faa
+
+cat ref04.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref04.mega.faa
+cat ref06.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref06.mega.faa
+cat ref07.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref07.mega.faa
+cat ref09.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref09.mega.faa
+cat ref10.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref10.mega.faa
+cat ref12.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref12.mega.faa
+cat ref18.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref18.mega.faa
+cat ref24.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref24.mega.faa
+cat ref25.singles.faa | sed -e '1!{/^>.*/d;}' | sed  ':a;N;$!ba;s/\n//2g' > ref25.mega.faa
+
+

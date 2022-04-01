@@ -1,0 +1,178 @@
+# This file describes the pre-processing of sequence data used to compare results from Sugden et al.
+# to results from Kenny et al.
+# Sequences were trimmed, clustered at 97% identity in QIIME2, and then imported to R
+# for downstream analyses.
+
+##### Download sequences files from SRA ######
+fastq-dump --split-files SAMN13757453
+fastq-dump --split-files SAMN13757454
+fastq-dump --split-files SAMN13757455
+fastq-dump --split-files SAMN13757456
+fastq-dump --split-files SAMN13757457
+fastq-dump --split-files SAMN13757458
+fastq-dump --split-files SAMN13757459
+fastq-dump --split-files SAMN13757460
+fastq-dump --split-files SAMN13757461
+fastq-dump --split-files SAMN13757462
+fastq-dump --split-files SAMN13757463
+
+##### Trim the last 60 nucleotides off forward reads from Sugden et al. #####
+cutadapt -u -60 -o SKE1.cut_R1.fastq SKE1_R1.fastq
+cutadapt -u -60 -o SKE2.cut_R1.fastq SKE2_R1.fastq
+cutadapt -u -60 -o SKE3.cut_R1.fastq SKE3_R1.fastq
+cutadapt -u -60 -o SKE4.cut_R1.fastq SKE4_R1.fastq
+cutadapt -u -60 -o SKE5.cut_R1.fastq SKE5_R1.fastq
+cutadapt -u -60 -o NMO1.cut_R1.fastq NMO1_R1.fastq
+cutadapt -u -60 -o NMO2.cut_R1.fastq NMO2_R1.fastq
+cutadapt -u -60 -o NMO3.cut_R1.fastq NMO3_R1.fastq
+cutadapt -u -60 -o NMO4.cut_R1.fastq NMO4_R1.fastq
+cutadapt -u -60 -o NMO5.cut_R1.fastq NMO5_R1.fastq
+cutadapt -u -60 -o COW1.cut_R1.fastq COW1_R1.fastq
+cutadapt -u -60 -o COW2.cut_R1.fastq COW2_R1.fastq
+cutadapt -u -60 -o COW3.cut_R1.fastq COW3_R1.fastq
+cutadapt -u -60 -o COW4.cut_R1.fastq COW4_R1.fastq
+cutadapt -u -60 -o COW5.cut_R1.fastq COW5_R1.fastq
+cutadapt -u -60 -o SKEW1.cut_R1.fastq SKEW1_R1.fastq
+cutadapt -u -60 -o SKEW2.cut_R1.fastq SKEW2_R1.fastq
+cutadapt -u -60 -o SKEW3.cut_R1.fastq SKEW3_R1.fastq
+cutadapt -u -60 -o SKEW4.cut_R1.fastq SKEW4_R1.fastq
+cutadapt -u -60 -o SKEW5.cut_R1.fastq SKEW5_R1.fastq
+cutadapt -u -60 -o NMOW1.cut_R1.fastq NMOW1_R1.fastq
+cutadapt -u -60 -o NMOW2.cut_R1.fastq NMOW2_R1.fastq
+cutadapt -u -60 -o NMOW3.cut_R1.fastq NMOW3_R1.fastq
+cutadapt -u -60 -o NMOW4.cut_R1.fastq NMOW4_R1.fastq
+cutadapt -u -60 -o NMOW5.cut_R1.fastq NMOW5_R1.fastq
+cutadapt -u -60 -o COWW1.cut_R1.fastq COWW1_R1.fastq
+cutadapt -u -60 -o COWW2.cut_R1.fastq COWW2_R1.fastq
+cutadapt -u -60 -o COWW4.cut_R1.fastq COWW4_R1.fastq
+cutadapt -u -60 -o COWW5.cut_R1.fastq COWW5_R1.fastq
+cutadapt -u -60 -o COWW1.cut_R1.fastq COWW1_R1.fastq
+cutadapt -u -60 -o COWW2.cut_R1.fastq COWW2_R1.fastq
+cutadapt -u -60 -o COWW4.cut_R1.fastq COWW4_R1.fastq
+cutadapt -u -60 -o COWW5.cut_R1.fastq COWW5_R1.fastq
+cutadapt -u -60 -o SKEBio1.cut_R1.fastq SKEBio1_R1.fastq
+cutadapt -u -60 -o SKEBio23.cut_R1.fastq SKEBio23_R1.fastq
+cutadapt -u -60 -o SKEBio4.cut_R1.fastq SKEBio4_R1.fastq
+cutadapt -u -60 -o SKEBio5.cut_R1.fastq SKEBio5_R1.fastq
+cutadapt -u -60 -o NMOBio1.cut_R1.fastq NMOBio1_R1.fastq
+cutadapt -u -60 -o NMOBio2.cut_R1.fastq NMOBio2_R1.fastq
+cutadapt -u -60 -o NMOBio3.cut_R1.fastq NMOBio3_R1.fastq
+cutadapt -u -60 -o COWBio1.cut_R1.fastq COWBio1_R1.fastq
+
+##### Trim the last 140 nucleotides off the reverse reads from Sugden et al. #####
+cutadapt -u -140 -o SKE1.cut_R2.fastq SKE1_R2.fastq
+cutadapt -u -140 -o SKE2.cut_R2.fastq SKE2_R2.fastq
+cutadapt -u -140 -o SKE3.cut_R2.fastq SKE3_R2.fastq
+cutadapt -u -140 -o SKE4.cut_R2.fastq SKE4_R2.fastq
+cutadapt -u -140 -o SKE5.cut_R2.fastq SKE5_R2.fastq
+cutadapt -u -140 -o NMO1.cut_R2.fastq NMO1_R2.fastq
+cutadapt -u -140 -o NMO2.cut_R2.fastq NMO2_R2.fastq
+cutadapt -u -140 -o NMO3.cut_R2.fastq NMO3_R2.fastq
+cutadapt -u -140 -o NMO4.cut_R2.fastq NMO4_R2.fastq
+cutadapt -u -140 -o NMO5.cut_R2.fastq NMO5_R2.fastq
+cutadapt -u -140 -o COW1.cut_R2.fastq COW1_R2.fastq
+cutadapt -u -140 -o COW2.cut_R2.fastq COW2_R2.fastq
+cutadapt -u -140 -o COW3.cut_R2.fastq COW3_R2.fastq
+cutadapt -u -140 -o COW4.cut_R2.fastq COW4_R2.fastq
+cutadapt -u -140 -o COW5.cut_R2.fastq COW5_R2.fastq
+cutadapt -u -140 -o SKEW1.cut_R2.fastq SKEW1_R2.fastq
+cutadapt -u -140 -o SKEW2.cut_R2.fastq SKEW2_R2.fastq
+cutadapt -u -140 -o SKEW3.cut_R2.fastq SKEW3_R2.fastq
+cutadapt -u -140 -o SKEW4.cut_R2.fastq SKEW4_R2.fastq
+cutadapt -u -140 -o SKEW5.cut_R2.fastq SKEW5_R2.fastq
+cutadapt -u -140 -o NMOW1.cut_R2.fastq NMOW1_R2.fastq
+cutadapt -u -140 -o NMOW2.cut_R2.fastq NMOW2_R2.fastq
+cutadapt -u -140 -o NMOW3.cut_R2.fastq NMOW3_R2.fastq
+cutadapt -u -140 -o NMOW4.cut_R2.fastq NMOW4_R2.fastq
+cutadapt -u -140 -o NMOW5.cut_R2.fastq NMOW5_R2.fastq
+cutadapt -u -140 -o COWW1.cut_R2.fastq COWW1_R2.fastq
+cutadapt -u -140 -o COWW2.cut_R2.fastq COWW2_R2.fastq
+cutadapt -u -140 -o COWW4.cut_R2.fastq COWW4_R2.fastq
+cutadapt -u -140 -o COWW5.cut_R2.fastq COWW5_R2.fastq
+cutadapt -u -140 -o COWW1.cut_R2.fastq COWW1_R2.fastq
+cutadapt -u -140 -o COWW2.cut_R2.fastq COWW2_R2.fastq
+cutadapt -u -140 -o COWW4.cut_R2.fastq COWW4_R2.fastq
+cutadapt -u -140 -o COWW5.cut_R2.fastq COWW5_R2.fastq
+cutadapt -u -140 -o SKEBio1.cut_R2.fastq SKEBio1_R2.fastq
+cutadapt -u -140 -o SKEBio23.cut_R2.fastq SKEBio23_R2.fastq
+cutadapt -u -140 -o SKEBio4.cut_R2.fastq SKEBio4_R2.fastq
+cutadapt -u -140 -o SKEBio5.cut_R2.fastq SKEBio5_R2.fastq
+cutadapt -u -140 -o NMOBio1.cut_R2.fastq NMOBio1_R2.fastq
+cutadapt -u -140 -o NMOBio2.cut_R2.fastq NMOBio2_R2.fastq
+cutadapt -u -140 -o NMOBio3.cut_R2.fastq NMOBio3_R2.fastq
+cutadapt -u -140 -o COWBio1.cut_R2.fastq COWBio1_R2.fastq
+
+##### Trim the V4 sequence primers from sequences from Kenny et al. #####
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757453.cut_1.fastq -p SAMN13757453.cut_2.fastq SAMN13757453_1.fastq SAMN13757453_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757454.cut_1.fastq -p SAMN13757454.cut_2.fastq SAMN13757454_1.fastq SAMN13757454_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757455.cut_1.fastq -p SAMN13757455.cut_2.fastq SAMN13757455_1.fastq SAMN13757455_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757456.cut_1.fastq -p SAMN13757456.cut_2.fastq SAMN13757456_1.fastq SAMN13757456_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757457.cut_1.fastq -p SAMN13757457.cut_2.fastq SAMN13757457_1.fastq SAMN13757457_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757458.cut_1.fastq -p SAMN13757458.cut_2.fastq SAMN13757458_1.fastq SAMN13757458_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757459.cut_1.fastq -p SAMN13757459.cut_2.fastq SAMN13757459_1.fastq SAMN13757459_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757460.cut_1.fastq -p SAMN13757460.cut_2.fastq SAMN13757460_1.fastq SAMN13757460_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757461.cut_1.fastq -p SAMN13757461.cut_2.fastq SAMN13757461_1.fastq SAMN13757461_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757462.cut_1.fastq -p SAMN13757462.cut_2.fastq SAMN13757462_1.fastq SAMN13757462_2.fastq
+cutadapt -g GTGYCAGCMGCCGCGGTAA -G GGACTACNVGGGTWTCTAAT --max-n 0 --discard-untrimmed -o SAMN13757463.cut_1.fastq -p SAMN13757463.cut_2.fastq SAMN13757463_1.fastq SAMN13757463_2.fastq
+
+##### Trim the last 60 nucleotides off forward reads from Kenny et al. #####
+cutadapt -u -60 -o SAMN13757453.cutc_1.fastq SAMN13757453.cut_1.fastq
+cutadapt -u -60 -o SAMN13757454.cutc_1.fastq SAMN13757454.cut_1.fastq
+cutadapt -u -60 -o SAMN13757455.cutc_1.fastq SAMN13757455.cut_1.fastq
+cutadapt -u -60 -o SAMN13757456.cutc_1.fastq SAMN13757456.cut_1.fastq
+cutadapt -u -60 -o SAMN13757457.cutc_1.fastq SAMN13757457.cut_1.fastq
+cutadapt -u -60 -o SAMN13757458.cutc_1.fastq SAMN13757458.cut_1.fastq
+cutadapt -u -60 -o SAMN13757459.cutc_1.fastq SAMN13757459.cut_1.fastq
+cutadapt -u -60 -o SAMN13757460.cutc_1.fastq SAMN13757460.cut_1.fastq
+cutadapt -u -60 -o SAMN13757461.cutc_1.fastq SAMN13757461.cut_1.fastq
+cutadapt -u -60 -o SAMN13757462.cutc_1.fastq SAMN13757462.cut_1.fastq
+cutadapt -u -60 -o SAMN13757463.cutc_1.fastq SAMN13757463.cut_1.fastq
+
+##### Trim the last 140 nucleotides off reverse reads from Kenny et al. #####
+cutadapt -u -140 -o SAMN13757453.cutc_2.fastq SAMN13757453.cut_2.fastq
+cutadapt -u -140 -o SAMN13757454.cutc_2.fastq SAMN13757454.cut_2.fastq
+cutadapt -u -140 -o SAMN13757455.cutc_2.fastq SAMN13757455.cut_2.fastq
+cutadapt -u -140 -o SAMN13757456.cutc_2.fastq SAMN13757456.cut_2.fastq
+cutadapt -u -140 -o SAMN13757457.cutc_2.fastq SAMN13757457.cut_2.fastq
+cutadapt -u -140 -o SAMN13757458.cutc_2.fastq SAMN13757458.cut_2.fastq
+cutadapt -u -140 -o SAMN13757459.cutc_2.fastq SAMN13757459.cut_2.fastq
+cutadapt -u -140 -o SAMN13757460.cutc_2.fastq SAMN13757460.cut_2.fastq
+cutadapt -u -140 -o SAMN13757461.cutc_2.fastq SAMN13757461.cut_2.fastq
+cutadapt -u -140 -o SAMN13757462.cutc_2.fastq SAMN13757462.cut_2.fastq
+cutadapt -u -140 -o SAMN13757463.cutc_2.fastq SAMN13757463.cut_2.fastq
+
+##### Process the sequences in QIIME2 #####
+conda activate
+source activate qiime2-2021.8
+
+##### Import sequence data #####
+qiime tools import --type 'SampleData[PairedEndSequencesWithQuality]' --input-path manifest_key_simple.csv --output-path paired-end-demux.qza --input-format PairedEndFastqManifestPhred33
+qiime demux summarize --i-data paired-end-demux.qza --o-visualization paired-end-demux.qzv
+#qiime tools view paired-end-demux.qzv
+
+##### Join paired-end reads #####
+qiime vsearch join-pairs --i-demultiplexed-seqs paired-end-demux.qza --o-joined-sequences demux-joined.qza
+qiime demux summarize --i-data demux-joined.qza --o-visualization demux-joined.qzv
+#qiime tools view demux-joined.qzv
+
+##### Dereplicate sequences #####
+qiime vsearch dereplicate-sequences --i-sequences demux-joined.qza --o-dereplicated-table table.qza --o-dereplicated-sequences rep-seqs.qza
+
+##### Identify chimeras #####
+qiime vsearch uchime-denovo --i-table table.qza --i-sequences rep-seqs.qza --output-dir uchime-dn-out
+qiime metadata tabulate --m-input-file uchime-dn-out/stats.qza --o-visualization uchime-dn-out/stats.qzv
+#qiime tools view uchime-dn-out/stats.qzv
+
+##### Remove chimeras from feature table and sequences #####
+qiime feature-table filter-features --i-table table.qza --m-metadata-file uchime-dn-out/nonchimeras.qza --o-filtered-table uchime-dn-out/table-nonchimeric-wo-borderline.qza
+qiime feature-table filter-seqs --i-data rep-seqs.qza --m-metadata-file uchime-dn-out/nonchimeras.qza --o-filtered-data uchime-dn-out/rep-seqs-nonchimeric-wo-borderline.qza
+qiime feature-table summarize --i-table uchime-dn-out/table-nonchimeric-wo-borderline.qza --o-visualization uchime-dn-out/table-nonchimeric-wo-borderline.qzv
+#qiime tools view uchime-dn-out/table-nonchimeric-wo-borderline.qzv
+
+##### Perform de novo clustering at 97% sequence identity #####
+qiime vsearch cluster-features-de-novo --i-table uchime-dn-out/table-nonchimeric-wo-borderline.qza --i-sequences uchime-dn-out/rep-seqs-nonchimeric-wo-borderline.qza --p-perc-identity 0.97 --o-clustered-table table-dn-97.qza --o-clustered-sequences rep-seqs-dn-97.qza
+
+##### Export feature table (counts per sample per sequence) and raw OTU sequences #####
+qiime tools export --input-path table-dn-97.qza --output-path feature-table
+qiime tools export --input-path rep-seqs-dn-97.qza --output-path dna-sequences
+
